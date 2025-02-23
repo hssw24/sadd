@@ -1,0 +1,107 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 350px;
+    width: 100%;
+  }
+  
+  .title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  .grid {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 5px 0;
+  }
+  
+  .digit {
+    width: 30px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .carry-row {
+    margin-top: 10px;
+  }
+  
+  .carry-input {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    background-color: #fffae6;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .separator {
+    border-bottom: 2px solid black;
+    margin: 10px 0;
+  }
+  
+  .result-input {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #e6ffe6;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .feedback {
+    margin-top: 10px;
+    color: red;
+    font-weight: bold;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+  }
+  
+  .check-button, .new-task-button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .check-button {
+    background-color: #007bff;
+  }
+  
+  .new-task-button {
+    background-color: #6c757d;
+  }
+  
+  .check-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .new-task-button:hover {
+    background-color: #545b62;
+  }
+  

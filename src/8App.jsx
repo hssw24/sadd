@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./styles.css";
 
 const generateNumbers = () => {
   const num1 = Math.floor(Math.random() * 900 + 100);
@@ -48,21 +47,21 @@ export default function AdditionTrainer() {
   };
 
   return (
-    <div className="container">
-      <h1 className="title">Schriftliche Addition</h1>
-      <div className="grid">
+    <div className="p-4 max-w-md mx-auto bg-white shadow-lg rounded-xl text-left font-mono text-lg">
+      <h1 className="text-xl font-bold mb-4 text-center">Schriftliche Addition 1548</h1>
+      <div className="grid grid-cols-5 gap-1 text-center">
         <div></div>
         {num1.toString().padStart(4, "0").split("").map((d, i) => (
-          <div key={i} className="digit">{d}</div>
+          <div key={i} className="p-2 border border-gray-300">{d}</div>
         ))}
       </div>
-      <div className="grid">
+      <div className="grid grid-cols-5 gap-1 text-center">
         <div>+</div>
         {num2.toString().padStart(4, "0").split("").map((d, i) => (
-          <div key={i} className="digit">{d}</div>
+          <div key={i} className="p-2 border border-gray-300">{d}</div>
         ))}
       </div>
-      <div className="grid carry-row">
+      <div className="grid grid-cols-5 gap-1 text-center mt-2">
         <div></div>
         {carry.map((val, i) => (
           <input
@@ -75,12 +74,12 @@ export default function AdditionTrainer() {
               newCarry[i] = e.target.value;
               setCarry(newCarry);
             }}
-            className="carry-input"
+            className="border border-gray-400 p-1 text-center w-8 bg-yellow-100"
           />
         ))}
       </div>
-      <div className="separator"></div>
-      <div className="grid">
+      <div className="border-b-2 border-black my-2"></div>
+      <div className="grid grid-cols-5 gap-1 text-center mt-2">
         <div>=</div>
         {userResults.map((val, index) => (
           <input
@@ -93,14 +92,14 @@ export default function AdditionTrainer() {
               newValues[index] = e.target.value;
               setUserResults(newValues);
             }}
-            className="result-input"
+            className="border border-gray-400 p-2 text-center w-10 bg-green-100"
           />
         ))}
       </div>
-      <p className="feedback">{feedback}</p>
-      <div className="button-group">
-        <button onClick={handleCheck} className="check-button">Prüfen</button>
-        <button onClick={handleNewTask} className="new-task-button">Neue Aufgabe</button>
+      <p className="mt-4 text-red-500 text-center">{feedback}</p>
+      <div className="mt-4 flex space-x-4 justify-center">
+        <button onClick={handleCheck} className="px-4 py-2 bg-blue-500 text-white rounded">Prüfen</button>
+        <button onClick={handleNewTask} className="px-4 py-2 bg-gray-500 text-white rounded">Neue Aufgabe</button>
       </div>
     </div>
   );
