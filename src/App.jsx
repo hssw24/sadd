@@ -48,7 +48,7 @@ export default function AdditionTrainer() {
 
   return (
     <div className="p-4 max-w-md mx-auto bg-white shadow-lg rounded-xl text-left font-mono text-lg">
-      <h1 className="text-xl font-bold mb-4 text-center">Schriftliche Addition</h1>
+      <h1 className="text-xl font-bold mb-4 text-center">Schriftliche Addition 1548</h1>
       <div className="grid grid-cols-5 gap-1 text-center">
         <div></div>
         {num1.toString().padStart(4, "0").split("").map((d, i) => (
