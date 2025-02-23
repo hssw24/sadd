@@ -47,21 +47,21 @@ export default function AdditionTrainer() {
   };
 
   return (
-    <div className="p-4 max-w-md mx-auto bg-white shadow-lg rounded-xl text-left">
+    <div className="p-4 max-w-md mx-auto bg-white shadow-lg rounded-xl text-right">
       <h1 className="text-xl font-bold mb-4 text-center">Schriftliche Addition</h1>
-      <div className="grid grid-cols-5 gap-2 text-left font-mono text-lg">
+      <div className="grid grid-cols-5 gap-2 text-center font-mono text-lg">
         <div></div>
         {num1.toString().padStart(4, "0").split("").map((d, i) => (
-          <div key={i} className="p-2 text-left">{d}</div>
+          <div key={i} className="p-2">{d}</div>
         ))}
       </div>
-      <div className="grid grid-cols-5 gap-2 text-left font-mono text-lg">
+      <div className="grid grid-cols-5 gap-2 text-center font-mono text-lg">
         <div>+</div>
         {num2.toString().padStart(4, "0").split("").map((d, i) => (
-          <div key={i} className="p-2 text-left">{d}</div>
+          <div key={i} className="p-2">{d}</div>
         ))}
       </div>
-      <div className="grid grid-cols-5 gap-2 text-left font-mono text-lg mt-2">
+      <div className="grid grid-cols-5 gap-2 text-center font-mono text-lg mt-2">
         <div></div>
         {carry.map((val, i) => (
           <input
@@ -74,7 +74,7 @@ export default function AdditionTrainer() {
               newCarry[i] = e.target.value;
               setCarry(newCarry);
             }}
-            className="border p-1 text-center w-6 bg-yellow-100 text-right"
+            className="border p-2 text-center w-10 bg-yellow-100"
           />
         ))}
       </div>

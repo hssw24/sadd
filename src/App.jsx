@@ -47,19 +47,22 @@ export default function AdditionTrainer() {
   };
 
   return (
-    <div className="p-4 max-w-md mx-auto bg-white shadow-lg rounded-xl">
-      <h1 className="text-xl font-bold mb-4">Schriftliche Addition</h1>
-      <div className="grid grid-cols-4 gap-2 text-center font-mono text-lg border-b-2 pb-2">
+    <div className="p-4 max-w-md mx-auto bg-white shadow-lg rounded-xl text-left">
+      <h1 className="text-xl font-bold mb-4 text-center">Schriftliche Addition</h1>
+      <div className="grid grid-cols-5 gap-2 text-left font-mono text-lg">
+        <div></div>
         {num1.toString().padStart(4, "0").split("").map((d, i) => (
-          <div key={i} className="p-2">{d}</div>
+          <div key={i} className="p-2 text-left">{d}</div>
         ))}
       </div>
-      <div className="grid grid-cols-4 gap-2 text-center font-mono text-lg border-b-2 pb-2">
+      <div className="grid grid-cols-5 gap-2 text-left font-mono text-lg">
+        <div>+</div>
         {num2.toString().padStart(4, "0").split("").map((d, i) => (
-          <div key={i} className="p-2">{d}</div>
+          <div key={i} className="p-2 text-left">{d}</div>
         ))}
       </div>
-      <div className="grid grid-cols-4 gap-2 text-center font-mono text-lg mt-2">
+      <div className="grid grid-cols-5 gap-2 text-left font-mono text-lg mt-2">
+        <div></div>
         {carry.map((val, i) => (
           <input
             key={i}
@@ -71,11 +74,13 @@ export default function AdditionTrainer() {
               newCarry[i] = e.target.value;
               setCarry(newCarry);
             }}
-            className="border p-2 text-center w-10 bg-yellow-100"
+            className="border p-1 text-center w-6 bg-yellow-100 text-right"
           />
         ))}
       </div>
-      <div className="grid grid-cols-4 gap-2 mt-2 border-t-2 pt-2">
+      <div className="border-b-2 border-black my-2"></div>
+      <div className="grid grid-cols-5 gap-2 mt-2">
+        <div>=</div>
         {userResults.map((val, index) => (
           <input
             key={index}
@@ -91,8 +96,8 @@ export default function AdditionTrainer() {
           />
         ))}
       </div>
-      <p className="mt-4 text-red-500">{feedback}</p>
-      <div className="mt-4 flex space-x-4">
+      <p className="mt-4 text-red-500 text-center">{feedback}</p>
+      <div className="mt-4 flex space-x-4 justify-center">
         <button onClick={handleCheck} className="px-4 py-2 bg-blue-500 text-white rounded">Prüfen</button>
         <button onClick={handleNewTask} className="px-4 py-2 bg-gray-500 text-white rounded">Neue Aufgabe</button>
       </div>
