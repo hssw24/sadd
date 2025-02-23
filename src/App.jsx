@@ -39,25 +39,30 @@ export default function AdditionTrainer() {
   };
 
   const handleNewTask = () => {
-    setNumbers(generateNumbers());
+    const newNumbers = generateNumbers();
+    setNumbers(newNumbers);
     setUserResults(["", "", "", ""]);
     setCarry(["", "", ""]);
     setFeedback("");
   };
 
   return (
-    <div style={{ fontFamily: "Arial, sans-serif", textAlign: "center", padding: "20px" }}>
-      <h1 style={{ fontSize: "20px", fontWeight: "bold" }}>Schriftliche Addition</h1>
-      <div style={{ display: "inline-block", textAlign: "right" }}>
+    <div className="p-4 max-w-md mx-auto bg-white shadow-lg rounded-xl text-left">
+      <h1 className="text-xl font-bold mb-4 text-center">Schriftliche Addition</h1>
+      <div className="grid grid-cols-5 gap-2 text-left font-mono text-lg">
+        <div></div>
         {num1.toString().padStart(4, "0").split("").map((d, i) => (
-          <div key={i} style={{ fontSize: "18px", fontWeight: "bold" }}>{d}</div>
-        ))}
-        <div style={{ fontSize: "18px", fontWeight: "bold" }}>+</div>
-        {num2.toString().padStart(4, "0").split("").map((d, i) => (
-          <div key={i} style={{ fontSize: "18px", fontWeight: "bold" }}>{d}</div>
+          <div key={i} className="p-2 text-left">{d}</div>
         ))}
       </div>
-      <div>
+      <div className="grid grid-cols-5 gap-2 text-left font-mono text-lg">
+        <div>+</div>
+        {num2.toString().padStart(4, "0").split("").map((d, i) => (
+          <div key={i} className="p-2 text-left">{d}</div>
+        ))}
+      </div>
+      <div className="grid grid-cols-5 gap-2 text-left font-mono text-lg mt-2">
+        <div></div>
         {carry.map((val, i) => (
           <input
             key={i}
@@ -69,31 +74,32 @@ export default function AdditionTrainer() {
               newCarry[i] = e.target.value;
               setCarry(newCarry);
             }}
-            style={{ width: "20px", textAlign: "center", margin: "2px", backgroundColor: "#fffae6" }}
+            className="border p-1 text-center w-6 bg-yellow-100 text-right"
           />
         ))}
       </div>
-      <div style={{ borderBottom: "2px solid black", width: "80px", margin: "5px auto" }}></div>
-      <div>
-        {userResults.map((val, i) => (
+      <div className="border-b-2 border-black my-2"></div>
+      <div className="grid grid-cols-5 gap-2 mt-2">
+        <div>=</div>
+        {userResults.map((val, index) => (
           <input
-            key={i}
+            key={index}
             type="text"
             maxLength="1"
             value={val}
             onChange={(e) => {
               const newValues = [...userResults];
-              newValues[i] = e.target.value;
+              newValues[index] = e.target.value;
               setUserResults(newValues);
             }}
-            style={{ width: "30px", textAlign: "center", fontSize: "18px", backgroundColor: "#e6ffe6", margin: "2px" }}
+            className="border p-2 text-center w-10 bg-green-100"
           />
         ))}
       </div>
-      <p style={{ color: "red", fontWeight: "bold" }}>{feedback}</p>
-      <div>
-        <button onClick={handleCheck} style={{ padding: "8px 12px", margin: "5px", backgroundColor: "#007bff", color: "white", borderRadius: "5px", border: "none" }}>Prüfen</button>
-        <button onClick={handleNewTask} style={{ padding: "8px 12px", margin: "5px", backgroundColor: "#6c757d", color: "white", borderRadius: "5px", border: "none" }}>Neue Aufgabe</button>
+      <p className="mt-4 text-red-500 text-center">{feedback}</p>
+      <div className="mt-4 flex space-x-4 justify-center">
+        <button onClick={handleCheck} className="px-4 py-2 bg-blue-500 text-white rounded">Prüfen</button>
+        <button onClick={handleNewTask} className="px-4 py-2 bg-gray-500 text-white rounded">Neue Aufgabe</button>
       </div>
     </div>
   );
