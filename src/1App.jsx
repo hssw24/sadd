@@ -9,7 +9,6 @@ const generateNumbers = () => {
 export default function AdditionTrainer() {
   const [[num1, num2], setNumbers] = useState(generateNumbers);
   const [userResults, setUserResults] = useState(["", "", "", ""]);
-  const [carry, setCarry] = useState(["", "", ""]);
   const [feedback, setFeedback] = useState("");
 
   const correctResult = num1 + num2;
@@ -26,39 +25,16 @@ export default function AdditionTrainer() {
   const handleNewTask = () => {
     setNumbers(generateNumbers);
     setUserResults(["", "", "", ""]);
-    setCarry(["", "", ""]);
     setFeedback("");
   };
 
   return (
     <div className="p-4 max-w-md mx-auto bg-white shadow-lg rounded-xl">
       <h1 className="text-xl font-bold mb-4">Schriftliche Addition</h1>
-      <div className="grid grid-cols-5 gap-2 text-center font-mono text-lg">
-        <div></div>
-        {carry.map((val, i) => (
-          <input
-            key={i}
-            type="text"
-            maxLength="1"
-            value={val}
-            onChange={(e) => {
-              const newCarry = [...carry];
-              newCarry[i] = e.target.value;
-              setCarry(newCarry);
-            }}
-            className="border p-2 text-center w-10"
-          />
-        ))}
-      </div>
       <div className="grid grid-cols-4 gap-2 text-center font-mono text-lg">
-        {num1.toString().padStart(4, "0").split("" ).map((d, i) => (
-          <div key={i} className="p-2">{d}</div>
-        ))}
-      </div>
-      <div className="grid grid-cols-4 gap-2 text-center font-mono text-lg border-t-2 mt-2 pt-2">
-        {num2.toString().padStart(4, "0").split("" ).map((d, i) => (
-          <div key={i} className="p-2">{d}</div>
-        ))}
+        <span>{num1.toString().padStart(4, "0").split("").map((d, i) => <div key={i}>{d}</div>)}</span>
+        <span>+</span>
+        <span>{num2.toString().padStart(4, "0").split("").map((d, i) => <div key={i}>{d}</div>)}</span>
       </div>
       <div className="grid grid-cols-4 gap-2 mt-4">
         {userResults.map((val, index) => (
