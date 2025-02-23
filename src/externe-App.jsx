@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
 
 const generateNumbers = () => {
   const num1 = Math.floor(Math.random() * 900 + 100);
@@ -54,8 +55,8 @@ export default function AdditionTrainer() {
       </div>
       <p className="mt-4 text-red-500">{feedback}</p>
       <div className="mt-4 flex space-x-4">
-        <button onClick={handleCheck} className="px-4 py-2 bg-blue-500 text-white rounded">Prüfen</button>
-        <button onClick={handleNewTask} className="px-4 py-2 bg-gray-500 text-white rounded">Neue Aufgabe</button>
+        <Button onClick={handleCheck}>Prüfen</Button>
+        <Button onClick={handleNewTask}>Neue Aufgabe</Button>
       </div>
     </div>
   );
