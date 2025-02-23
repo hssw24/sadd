@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./styles.css";
 
 const generateNumbers = () => {
   const num1 = Math.floor(Math.random() * 900 + 100);
@@ -40,30 +39,25 @@ export default function AdditionTrainer() {
   };
 
   const handleNewTask = () => {
-    const newNumbers = generateNumbers();
-    setNumbers(newNumbers);
+    setNumbers(generateNumbers());
     setUserResults(["", "", "", ""]);
     setCarry(["", "", ""]);
     setFeedback("");
   };
 
   return (
-    <div className="container">
-      <h1 className="title">Schriftliche Addition</h1>
-      <div className="grid">
-        <div></div>
+    <div style={{ fontFamily: "Arial, sans-serif", textAlign: "center", padding: "20px" }}>
+      <h1 style={{ fontSize: "20px", fontWeight: "bold" }}>Schriftliche Addition</h1>
+      <div style={{ display: "inline-block", textAlign: "right" }}>
         {num1.toString().padStart(4, "0").split("").map((d, i) => (
-          <div key={i} className="digit">{d}</div>
+          <div key={i} style={{ fontSize: "18px", fontWeight: "bold" }}>{d}</div>
         ))}
-      </div>
-      <div className="grid">
-        <div>+</div>
+        <div style={{ fontSize: "18px", fontWeight: "bold" }}>+</div>
         {num2.toString().padStart(4, "0").split("").map((d, i) => (
-          <div key={i} className="digit">{d}</div>
+          <div key={i} style={{ fontSize: "18px", fontWeight: "bold" }}>{d}</div>
         ))}
       </div>
-      <div className="grid carry-row">
-        <div></div>
+      <div>
         {carry.map((val, i) => (
           <input
             key={i}
@@ -75,32 +69,31 @@ export default function AdditionTrainer() {
               newCarry[i] = e.target.value;
               setCarry(newCarry);
             }}
-            className="carry-input"
+            style={{ width: "20px", textAlign: "center", margin: "2px", backgroundColor: "#fffae6" }}
           />
         ))}
       </div>
-      <div className="separator"></div>
-      <div className="grid">
-        <div>=</div>
-        {userResults.map((val, index) => (
+      <div style={{ borderBottom: "2px solid black", width: "80px", margin: "5px auto" }}></div>
+      <div>
+        {userResults.map((val, i) => (
           <input
-            key={index}
+            key={i}
             type="text"
             maxLength="1"
             value={val}
             onChange={(e) => {
               const newValues = [...userResults];
-              newValues[index] = e.target.value;
+              newValues[i] = e.target.value;
               setUserResults(newValues);
             }}
-            className="result-input"
+            style={{ width: "30px", textAlign: "center", fontSize: "18px", backgroundColor: "#e6ffe6", margin: "2px" }}
           />
         ))}
       </div>
-      <p className="feedback">{feedback}</p>
-      <div className="button-group">
-        <button onClick={handleCheck} className="check-button">Prüfen</button>
-        <button onClick={handleNewTask} className="new-task-button">Neue Aufgabe</button>
+      <p style={{ color: "red", fontWeight: "bold" }}>{feedback}</p>
+      <div>
+        <button onClick={handleCheck} style={{ padding: "8px 12px", margin: "5px", backgroundColor: "#007bff", color: "white", borderRadius: "5px", border: "none" }}>Prüfen</button>
+        <button onClick={handleNewTask} style={{ padding: "8px 12px", margin: "5px", backgroundColor: "#6c757d", color: "white", borderRadius: "5px", border: "none" }}>Neue Aufgabe</button>
       </div>
     </div>
   );
